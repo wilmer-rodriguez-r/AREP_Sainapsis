@@ -27,19 +27,3 @@ def load_index(fileName, embeddings):
     text_splitter = CharacterTextSplitter()
     docs = text_splitter.split_documents(documents)
     docsearch = Pinecone.from_texts([docs[0].page_content], embeddings, index_name='sainapsis')
-
-
-
-#Herramienta
-def buscar():
-    pinecone.init(api_key="27d6859f-2671-4044-97c9-e428d612c5dc",
-                  environment="gcp-starter")
-    embeddings = OpenAIEmbeddings()
-    # if you already have an index, you can load it like this
-    docsearch = Pinecone.from_existing_index("sainapsis", embeddings)
-    qa = RetrievalQA.from_chain_type(llm=OpenAI(), chain_type="refine", retriever=docsearch.as_retriever(search_type="similarity"))
-    query = "Cuantos años de acreditación tiene ingeniría industrial?"
-    print(qa.run(query))
-
-
-buscar()

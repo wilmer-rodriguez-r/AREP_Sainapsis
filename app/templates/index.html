@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SAINAPSIS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename = 'js/apiclient.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/app.js')}}"></script>
+</head>
+
+<body>
+    <h1>Consultar con OPENAI</h1>
+    <form onsubmit = "{app.onSumbit()}">
+        <label for="query">Query:</label><br>
+        <input type="text" id="query" name="query" placeholder="¿Qué buscas?"><br><br>
+        <input type="button" value="Submit" onclick="app.onSumbit()">
+    </form>
+    <div id="getrespmsg"></div>
+</body>
+
+</html>
